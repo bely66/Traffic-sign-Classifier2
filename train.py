@@ -34,7 +34,7 @@ def load_split(base_path,csvpath):
     random.shuffle(rows)
     
     for (i,row) in enumerate(rows):
-        if i > 0 and i%1000 : 
+        if i > 0 and i%1000==0 : 
             print("processed {} images ".format(i))
             
         img_id , image_path = row.strip().split(",")[-2:]
