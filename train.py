@@ -98,11 +98,15 @@ y_test = to_categorical(y_test, numLabels)
 classTotals = y_train.sum(axis=0)
 classWeight = classTotals.max() / classTotals
 
-aug = ImageDataGenerator(zoom_range=0.1,rotation_range=10,
-                         width_shift_range=0.1
-                         ,length_shift_range=0.1,
-                         shear_range=0.15)
-
+aug = ImageDataGenerator(
+	rotation_range=10,
+	zoom_range=0.15,
+	width_shift_range=0.1,
+	height_shift_range=0.1,
+	shear_range=0.15,
+	horizontal_flip=False,
+	vertical_flip=False,
+	fill_mode="nearest")
 optimizer = Adam(lr=INIT_LR,decay = INIT_LR/(NUM_EPOCHS*0.5))
 
 model = Traffic_Classifier().build(32,32,3,numLabels)
