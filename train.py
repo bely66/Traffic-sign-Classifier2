@@ -129,6 +129,11 @@ print(classification_report(y_test.argmax(axis=1),
 print("[INFO] serializing network to '{}'...".format(args["model"]))
 model.save(args["model"])
 
+import json
+
+with open('history.json', 'w') as f:
+    json.dump(H.history, f)
+
 
 N = np.arange(0, NUM_EPOCHS)
 plt.style.use("ggplot")
